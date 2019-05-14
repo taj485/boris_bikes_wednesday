@@ -7,6 +7,13 @@ describe Bike do
     #Act
     docking_station.release_bike
     #Assert
-    expect(bike1).to be_a_kind_of(Bike)
+    expect(docking_station.bike1).to be_a_kind_of(Bike)
+  end
+
+  it 'bike can respond to the method working?' do
+    #Arrange
+    bike1 = Bike.new
+    #act
+    expect(bike1).to respond_to(:working?)
   end
 end
