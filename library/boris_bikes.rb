@@ -1,13 +1,17 @@
 
 class DockingStation
-  attr_reader :storage
+  attr_reader :bike_released
+  attr_reader :bike1
 
-    def initialize
-      @storage = 10
-    end
+  def initialize
+    @bike_released = false
+  end
 
   def release_bike
-    @storage -= 1
-    puts storage
+    @bike_released  = true
+    $bike1 = Bike.new
   end
+end
+
+class Bike
 end
