@@ -33,4 +33,11 @@ describe DockingStation do
     #assertion
     expect { docking_station.release_bike }.to raise_error
   end
+
+  it 'wont dock a bike because the docking station is full' do
+    #Arrange
+    docking_station.dock_bike
+    #assertion
+    expect{ docking_station.dock_bike }.to raise_error
+  end
 end

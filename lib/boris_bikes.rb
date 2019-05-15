@@ -10,11 +10,15 @@ class DockingStation
 
   def dock_bike
     #in here we dock a ghost bike
-    @storage.push(@bike1)
+    if @storage.empty?
+      @storage.push(@bike1)
+    else
+      raise "Docking station is full"
+    end
   end
 
   def release_bike
-    if !@storage.empty? #docking station not empty
+    if !@storage.empty? #docking station is not empty
       @bike_released = true
       @bike1 = Bike.new
     else
