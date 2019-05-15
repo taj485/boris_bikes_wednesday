@@ -28,4 +28,11 @@ describe DockingStation do
    docking_station.dock_bike
    expect(docking_station.storage).to include(docking_station.bike1)
  end
+
+ it 'does not release bike when there are none available' do
+  #arrange
+  #Act
+  #assertion
+  expect()
+ end
 end
