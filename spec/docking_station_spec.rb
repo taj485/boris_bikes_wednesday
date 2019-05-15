@@ -1,4 +1,4 @@
-require './library/boris_bikes.rb'
+require 'boris_bikes.rb'
 
 describe DockingStation do
  it 'Release bike from the docking station' do
@@ -15,7 +15,7 @@ describe DockingStation do
    docking_station = DockingStation.new
    docking_station.release_bike
    #Act
-   docking_station.dock_bike(docking_station.bike1)
+   docking_station.dock_bike
    #assertion
    expect(docking_station.storage).to include(docking_station.bike1)
  end
@@ -25,7 +25,7 @@ describe DockingStation do
    docking_station = DockingStation.new
    docking_station.release_bike
    #Act
-   docking_station.dock_bike(docking_station.bike1)
-   expect(docking_station.see_storage).to include(docking_station.bike1)
+   docking_station.dock_bike
+   expect(docking_station.storage).to include(docking_station.bike1)
  end
 end

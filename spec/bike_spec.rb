@@ -1,4 +1,4 @@
-require './library/boris_bikes.rb'
+require 'boris_bikes.rb'
 
 describe Bike do
   it 'shows there is an instance of Bike' do

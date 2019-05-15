@@ -8,17 +8,13 @@ class DockingStation
     @bike_released = false
   end
 
-  def dock_bike(bike)
-  @storage.push(bike)
+  def dock_bike
+  @storage.push(@bike1)
   end
 
   def release_bike
     @bike_released  = true
     @bike1 = Bike.new
-  end
-
-  def see_storage
-    @storage
   end
 end
 
@@ -26,8 +22,3 @@ class Bike
   def working?
   end
 end
-
-docking_station = DockingStation.new
-docking_station.release_bike
-docking_station.dock_bike(docking_station.bike1)
-docking_station.see_storage
