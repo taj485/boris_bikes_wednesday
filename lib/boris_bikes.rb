@@ -9,12 +9,17 @@ class DockingStation
   end
 
   def dock_bike
-  @storage.push(@bike1)
+    #in here we dock a ghost bike
+    @storage.push(@bike1)
   end
 
   def release_bike
-    @bike_released  = true
-    @bike1 = Bike.new
+    if !@storage.empty? #docking station not empty
+      @bike_released = true
+      @bike1 = Bike.new
+    else
+      raise "no bikes found so nothing to be released"
+    end
   end
 end
 

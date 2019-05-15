@@ -5,6 +5,7 @@ describe Bike do
     #Arrange
     docking_station = DockingStation.new
     #Act
+    docking_station.dock_bike
     docking_station.release_bike
     #Assert
     expect(docking_station.bike1).to be_a_kind_of(Bike)
