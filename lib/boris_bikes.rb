@@ -9,7 +9,7 @@ class DockingStation
 
   def dock_bike(bike)
     #in here we dock a ghost bike
-    if @storage.length <= 20
+    unless full?
       @storage.push(bike)
     else
       raise "Docking station is full"
@@ -22,6 +22,12 @@ class DockingStation
     else
       raise "no bikes found so nothing to be released"
     end
+  end
+
+  private
+
+  def full?
+     @storage.length >= 20
   end
 end
 
