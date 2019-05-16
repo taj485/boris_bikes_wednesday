@@ -18,7 +18,7 @@ class DockingStation
   end
 
   def release_bike
-    if !@storage.empty? #docking station is not empty
+    unless @storage.empty? #docking station is not empty
       @bike_released = true
       @bike1 = Bike.new
     else
