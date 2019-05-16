@@ -32,10 +32,16 @@ describe DockingStation do
     expect { docking_station.release_bike }.to raise_error
   end
 
-  it 'can only hold 20 bike' do
+  it 'can only hold 20 bike if not specified' do
     #Act
     DockingStation::DEFAULT_CAPACITY.times { docking_station.dock_bike Bike.new }
     #assertion
     expect { docking_station.dock_bike }.to raise_error
+  end
+
+  it 'can take input and set it as capacity for storage' do
+    docking_station = DockingStation.new(5)
+    #assertion
+    expect(docking_station.capacity).to eql(5)
   end
 end
