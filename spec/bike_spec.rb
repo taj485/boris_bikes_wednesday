@@ -5,10 +5,9 @@ describe Bike do
     #Arrange
     docking_station = DockingStation.new
     #Act
-    docking_station.dock_bike
-    docking_station.release_bike
+    docking_station.dock_bike(Bike.new)
     #Assert
-    expect(docking_station.bike1).to be_a_kind_of(Bike)
+    expect(docking_station.storage[0]).to be_a_kind_of(Bike)
   end
 
   it 'bike can respond to the method working?' do

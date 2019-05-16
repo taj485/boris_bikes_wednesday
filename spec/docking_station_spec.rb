@@ -5,26 +5,24 @@ describe DockingStation do
     #arrange
     DockingStation.new
   }
-  it "Release bike from the docking station" do
+  it "Can release bike from the docking station" do
     #arrange
-    docking_station.dock_bike
-    #act
-    docking_station.release_bike
-    #assertion
-    expect(docking_station.bike_released).to be true
+    docking_station.dock_bike(Bike.new)
+    #Act/assertion
+    expect(docking_station.release_bike).to be_a_kind_of(Bike)
   end
 
   it "can dock bike at the docking station" do
     #Act
-    docking_station.dock_bike
+    bike = Bike.new
+    docking_station.dock_bike(bike)
     #assertion
-    expect(docking_station.storage).to include(docking_station.bike1)
+    expect(docking_station.storage).to include(bike)
   end
 
-  it "can check if the bike has been docked" do
-    #Act
-    docking_station.dock_bike
-    expect(docking_station.storage).to include(docking_station.bike1)
+  it "can check storage" do
+    #assertion
+    expect(docking_station).to respond_to(:storage)
   end
 
   it "does not release bike when there are none available" do
@@ -34,10 +32,10 @@ describe DockingStation do
     expect { docking_station.release_bike }.to raise_error
   end
 
-  it 'wont dock a bike because the docking station is full' do
-    #Arrange
-    docking_station.dock_bike
+  it 'can only hold 20 bike' do
+    #Act
+    20.times { docking_station.dock_bike Bike.new }
     #assertion
-    expect{ docking_station.dock_bike }.to raise_error
+    expect { docking_station.dock_bike }.to raise_error
   end
 end
