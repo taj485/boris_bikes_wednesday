@@ -34,7 +34,7 @@ describe DockingStation do
 
   it 'can only hold 20 bike' do
     #Act
-    20.times { docking_station.dock_bike Bike.new }
+    DockingStation::DEFAULT_CAPACITY.times { docking_station.dock_bike Bike.new }
     #assertion
     expect { docking_station.dock_bike }.to raise_error
   end

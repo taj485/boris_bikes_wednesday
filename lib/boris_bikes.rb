@@ -1,6 +1,7 @@
 class DockingStation
   attr_reader :bike_released
   attr_accessor :storage
+DEFAULT_CAPACITY = 20
 
   def initialize
     @storage = []
@@ -27,7 +28,7 @@ class DockingStation
   private
 
   def full?
-     @storage.length >= 20
+     @storage.length >= DEFAULT_CAPACITY
   end
 end
 
