@@ -1,8 +1,10 @@
+require 'bike'
+
 class DockingStation
-  attr_reader :bike_released
   attr_accessor :storage
   attr_reader :capacity
-DEFAULT_CAPACITY = 20
+  DEFAULT_CAPACITY = 20
+  attr_accessor :broken_bike_storage
 
   def initialize(capacity = DEFAULT_CAPACITY)
     @storage = []
@@ -11,19 +13,26 @@ DEFAULT_CAPACITY = 20
   end
 
   def dock_bike(bike)
-    #in here we dock a ghost bike
-    unless full?
+    if bike == "broken"
       @storage.push(bike)
     else
-      raise "Docking station is full"
+      unless full?
+        @storage.push(bike) # will run if it is false
+      else
+        raise "Docking station is full" # will run if it is true
+      end
     end
   end
 
-  def release_bike
-    unless @storage.empty? #docking station is not empty
-      @storage.pop
+  def release_bike(bike)
+    if bike == "broken"
+      raise "Can not release broken bike!"
     else
-      raise "no bikes found so nothing to be released"
+      unless @storage.empty? #docking station is not empty
+        @storage.pop
+      else
+        raise "no bikes found so nothing to be released"
+      end
     end
   end
 
@@ -31,10 +40,5 @@ DEFAULT_CAPACITY = 20
 
   def full?
      @storage.length >= @capacity
-  end
-end
-
-class Bike
-  def working?
   end
 end

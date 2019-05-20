@@ -5,11 +5,13 @@ describe DockingStation do
     #arrange
     DockingStation.new
   }
+
   it "Can release bike from the docking station" do
     #arrange
-    docking_station.dock_bike(Bike.new)
+    bike = Bike.new
+    docking_station.dock_bike(bike)
     #Act/assertion
-    expect(docking_station.release_bike).to be_a_kind_of(Bike)
+    expect(docking_station.release_bike(bike)).to be_a_kind_of(Bike)
   end
 
   it "can dock bike at the docking station" do
@@ -43,5 +45,16 @@ describe DockingStation do
     docking_station = DockingStation.new(5)
     #assertion
     expect(docking_station.capacity).to eql(5)
+  end
+
+  it 'can hold broken bikes in broken bike storage' do
+    docking_station.dock_bike(Bike.new.working?)
+    expect(docking_station.storage).to include("broken")
+  end
+
+  it 'will not release broken bikes' do
+    bike = Bike.new.working?
+    docking_station.dock_bike(bike)
+    expect { docking_station.release_bike(bike) }. to raise_error
   end
 end

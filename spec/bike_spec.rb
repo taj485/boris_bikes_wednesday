@@ -10,10 +10,16 @@ describe Bike do
     expect(docking_station.storage[0]).to be_a_kind_of(Bike)
   end
 
-  it 'bike can respond to the method working?' do
+  it 'can respond to the method working?' do
     #Arrange
-    bike1 = Bike.new
+    bike = Bike.new
     #act
-    expect(bike1).to respond_to(:working?)
+    expect(bike).to respond_to(:working?)
   end
+
+  it 'can return "broken" if bike is broken' do
+    bike = Bike.new
+    expect(bike.working?).to eql("broken")
+  end
+
 end
